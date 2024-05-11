@@ -11,6 +11,7 @@ import {
   Tag,
   Text,
 } from '@chakra-ui/react'
+import Head from 'next/head'
 import { useRef } from 'react'
 
 type Props = {}
@@ -18,66 +19,73 @@ type Props = {}
 export default function Page({}: Props) {
   const cardRef = useRef(null)
   return (
-    <Flex
-      minH={'100vh'}
-      bg={'primary.yellow'}
-      align={'center'}
-      justify={'center'}
-    >
-      <Box position={'relative'}>
-        <Card
-          ref={cardRef}
-          w={'sm'}
-          p={6}
-          borderRadius={'2xl'}
-          border={'1px solid'}
-          zIndex={1}
-        >
-          <Image
-            src={'./images/illustration-article.svg'}
-            alt="illustration"
+    <Box>
+      <Head>
+        <title>Frontend Mentor | Blog preview card</title>
+      </Head>
+      <Flex
+        minH={'100vh'}
+        bg={'primary.yellow'}
+        align={'center'}
+        justify={'center'}
+      >
+        <Box position={'relative'}>
+          <Card
+            ref={cardRef}
+            w={'sm'}
+            p={6}
             borderRadius={'2xl'}
-          />
-          <Box mt={5}>
-            <Tag w={'fit-content'} bg={'primary.yellow'} fontWeight={800}>
-              Learning
-            </Tag>
-            <Text mt={4} fontSize={'sm'}>
-              Published 21 Dec 2023
-            </Text>
-            <Heading
-              mt={5}
-              as={'h2'}
-              fontSize={'xl'}
-              fontWeight={800}
-              _hover={{ color: 'primary.yellow' }}
-            >
-              HTML & CSS foundations
-            </Heading>
-            <Text mt={5} color={'neutral.gray'}>
-              These languages are the backbone of every website, defining
-              structure, content, and presentation.
-            </Text>
-            <HStack mt={6}>
-              <Avatar src={'./images/image-avatar.webp'} size={'sm'} />
-              <Text fontSize={'sm'} fontWeight={800}>
-                Greg Hooper
+            border={'1px solid'}
+            zIndex={1}
+          >
+            <Image
+              src={'./images/illustration-article.svg'}
+              alt="illustration"
+              borderRadius={'2xl'}
+            />
+            <Box mt={5}>
+              <Tag w={'fit-content'} bg={'primary.yellow'} fontWeight={800}>
+                Learning
+              </Tag>
+              <Text mt={4} fontSize={'sm'}>
+                Published 21 Dec 2023
               </Text>
-            </HStack>
-          </Box>
-        </Card>
-        <Box
-          top={2}
-          left={2}
-          borderRadius={'2xl'}
-          zIndex={0}
-          position={'absolute'}
-          height={'full'}
-          width={'full'}
-          bg={'neutral.black'}
-        />
-      </Box>
-    </Flex>
+              <Heading
+                mt={5}
+                as={'h2'}
+                fontSize={'xl'}
+                fontWeight={800}
+                cursor={'pointer'}
+                transition={'color 0.1s easy-in-out'}
+                _hover={{ color: 'primary.yellow' }}
+              >
+                HTML & CSS foundations
+              </Heading>
+              <Text mt={5} color={'neutral.gray'}>
+                These languages are the backbone of every website, defining
+                structure, content, and presentation.
+              </Text>
+              <HStack mt={6}>
+                <Avatar src={'./images/image-avatar.webp'} size={'sm'} />
+                <Text fontSize={'sm'} fontWeight={800}>
+                  Greg Hooper
+                </Text>
+              </HStack>
+            </Box>
+          </Card>
+          <Box
+            top={2}
+            left={2}
+            borderRadius={'2xl'}
+            zIndex={0}
+            position={'absolute'}
+            height={'full'}
+            width={'full'}
+            bg={'neutral.black'}
+          />
+        </Box>
+      </Flex>
+    </Box>
   )
 }
 /* 
